@@ -31,7 +31,7 @@ class BaseModel():
 
     def to_dict(self):
         """Return a dictionary with all key/values of the instance."""
-        ret = self.__dict__
+        ret = dict(self.__dict__)
         ret["__class__"] = self.__class__.__name__
         ret["created_at"] = datetime.isoformat(self.created_at)
         ret["updated_at"] = datetime.isoformat(self.updated_at)
