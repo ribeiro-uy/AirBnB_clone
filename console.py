@@ -5,6 +5,7 @@ Accepted commands:
     EOF
     quit
 """
+import cmd
 
 
 class HBNBCommand(cmd.Cmd):
