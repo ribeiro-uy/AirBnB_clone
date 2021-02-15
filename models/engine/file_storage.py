@@ -11,27 +11,37 @@ class FileStorage:
 
     def all(self):
         """Returns the dictionary __objects"""
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id"""
         key = str(obj.__class__.__name__ + '.' + obj.id)
-        self.__objects[key] = obj
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)."""
-        with open(self.__file_path, "w") as f:
-            for key in self.__objects:
-                json.dump(self.__objects[key], f)
+        new_dict = {}
+        for key, value in FileStorage.__objects.items():
+            new_dict[key] = value.to_dict()
+        with open(FileStorage.__file_path, "w") as f:
+            json.dump(new_dict, f)
 
     def reload(self):
         """Deserializes the JSON file to __objects (only if the JSON
         file (__file_path) exists; otherwise, do nothing. If the file
         doesn’t exist, no exception should be raised)."""
+        all_dicts = []
         try:
-            with open(self.__file_path, 'r') as file_open:
-                new_dict = json.load(file_open)
-            for key in new_dict:
-                self.new(new_dict[key])
+            with open(FileStorage.__file_path, 'r') as file_open:
+                for line in file_open:
+                    all_dicts.append(json.loads(line))
+            for value in all_dicts:
+                # Loop through dictionary of dictionaries,
+                # Creating an instance of the class for each dictionary.
+                inst = eval(value)
+                # Save new instance in __objects.
+                # THIS IS NOT WORKING BUT WHY
+                key = str(inst.__class__.__name__ + '.' + inst.id)
+                FileStorage.__objects[key] = inst
         except:
             pass

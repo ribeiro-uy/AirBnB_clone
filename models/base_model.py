@@ -11,10 +11,10 @@ class BaseModel():
     """This class is the base class for other classes."""
     def __init__(self, *args, **kwargs):
         """Initialize an instance of this class."""
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
         if kwargs is None or len(kwargs) == 0:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             models.storage.new(self)
         else:
             for key in kwargs:
