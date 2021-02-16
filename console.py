@@ -351,16 +351,16 @@ class HBNBCommand(cmd.Cmd):
                 # Get the instance
                 instance = new_dict[new_key]
                 # Get the attribute to update from that instance
-                try:
+                # try:
                     # Get the type of the attribute
                     # Cast the attribute value to corresponding type
-                    up_attr = getattr(instance, arg_list[2])
-                    attr_type = type(up_attr)
-                    cast_attr_val = eval('attr_type' + '(' + arg_list[3] + ')')
-                    setattr(instance, arg_list[2], cast_attr_val)
-                except Exception:
+                    # up_attr = getattr(instance, arg_list[2])
+                    # attr_type = type(up_attr)
+                    # cast_attr_val = eval('attr_type' + '(' + arg_list[3] + ')')
+                    # setattr(instance, arg_list[2], cast_attr_val)
+                #except Exception:
                     # If attribute does not exist, save value to set.
-                    setattr(instance, arg_list[2], arg_list[3])
+                setattr(instance, arg_list[2], arg_list[3])
                 # Set attribute with new value
                 # Save changes to JSON file
                 storage.save()
