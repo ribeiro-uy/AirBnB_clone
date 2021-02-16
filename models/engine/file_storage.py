@@ -1,47 +1,72 @@
-#!/usr/bin/env python3
-"""This module contains a class FileStorage that serializes instances
-to a JSON file and deserializes JSON file to instances."""
+#!/usr/bin/python3
+"""
+This module contains the methods for serialization/deserialization
+and also save the data in files.
+"""
 import json
+from models.base_model import BaseModel
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.amenity import Amenity
 
 
-class FileStorage:
-
+class FileStorage():
+    """this class serializes json to a file and
+    deserializes from a file
+    """
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """Returns the dictionary __objects"""
+        """return the __objects dictionary
+        """
         return FileStorage.__objects
 
     def new(self, obj):
-        """Sets in __objects the obj with key <obj class name>.id"""
-        key = str(obj.__class__.__name__ + '.' + obj.id)
+        """set the __objects with obj in the key
+        <obj class name>.id
+        """
+        key = obj.__class__.__name__ + '.' + obj.id
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """Serializes __objects to the JSON file (path: __file_path)."""
+        """serializes __objects to a JSON path from __file_path
+        """
         new_dict = {}
         for key, value in FileStorage.__objects.items():
             new_dict[key] = value.to_dict()
-        with open(FileStorage.__file_path, "w") as f:
+
+        with open(FileStorage.__file_path, 'w') as f:
             json.dump(new_dict, f)
 
     def reload(self):
-        """Deserializes the JSON file to __objects (only if the JSON
-        file (__file_path) exists; otherwise, do nothing. If the file
-        doesn’t exist, no exception should be raised)."""
-        all_dicts = []
+        """ Deserialize the JSON file to __objects (only if JSON file exists).
+        """
         try:
-            with open(FileStorage.__file_path, 'r') as file_open:
-                for line in file_open:
-                    all_dicts.append(json.loads(line))
-            for value in all_dicts:
-                # Loop through dictionary of dictionaries,
-                # Creating an instance of the class for each dictionary.
-                inst = eval(value)
-                # Save new instance in __objects.
-                # THIS IS NOT WORKING BUT WHY
-                key = str(inst.__class__.__name__ + '.' + inst.id)
-                FileStorage.__objects[key] = inst
-        except:
+            with open(FileStorage.__file_path, 'r') as f:
+                # all_dicts = json.load(f)
+                # for i in all_dicts.values():
+                    # print(i)
+                # print("this is where all objs should be: {}".format(FileStorage.__objects))
+                # for key, value in all_dicts.items():
+                    # Loop through dictionary of dictionaries,
+                    # creating an instance of the class for each dictionary.
+                    # cls_name is the class for the current object dict.
+                #    cls_name = value.get('__class__')
+                #    del value["__class__"]
+                    # eval tries to execute the string within it.
+                #    inst = eval(cls_name + '(**value)')
+
+                    # Save new instance in __objects.
+                #    self.new(inst)
+                objdict = json.load(f)
+                for o in objdict.values():  # Traverse only through values
+                    cls_name = o["__class__"]
+                    del o["__class__"]  # Remove class name from dictionary
+                    self.new(eval(cls_name)(**o))  # Create new instance
+        except FileNotFoundError:
             pass
+
