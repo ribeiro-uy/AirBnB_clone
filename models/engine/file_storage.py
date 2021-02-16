@@ -47,21 +47,6 @@ class FileStorage():
         """
         try:
             with open(FileStorage.__file_path, 'r') as f:
-                # all_dicts = json.load(f)
-                # for i in all_dicts.values():
-                    # print(i)
-                # print("this is where all objs should be: {}".format(FileStorage.__objects))
-                # for key, value in all_dicts.items():
-                    # Loop through dictionary of dictionaries,
-                    # creating an instance of the class for each dictionary.
-                    # cls_name is the class for the current object dict.
-                #    cls_name = value.get('__class__')
-                #    del value["__class__"]
-                    # eval tries to execute the string within it.
-                #    inst = eval(cls_name + '(**value)')
-
-                    # Save new instance in __objects.
-                #    self.new(inst)
                 objdict = json.load(f)
                 for o in objdict.values():  # Traverse only through values
                     cls_name = o["__class__"]
@@ -69,4 +54,3 @@ class FileStorage():
                     self.new(eval(cls_name)(**o))  # Create new instance
         except FileNotFoundError:
             pass
-
