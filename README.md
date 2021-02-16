@@ -8,11 +8,18 @@ This program works both in interactive and non-interactive mode.
 
 # General usage
 
-Download this repository and execute the console file. Then input commands.
+## Installation
+
+* Clone this repository: git clone "https://github.com/alexaorrico/AirBnB_clone.git"
+* Access AirBnb directory: cd AirBnB_clone
+* Run hbnb(interactively): ./console and enter command
+* Run hbnb(non-interactively): echo "<command>" | ./console.py
+
+Then input commands.
 
 ´´´ $ ./console.py
 ´´´ (hbnb) help
-´´´ 
+´´´
 ´´´ Documented commands (type help <topic>):
 ´´´
 ´´´ ...
