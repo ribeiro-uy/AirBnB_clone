@@ -46,3 +46,9 @@ class TestBaseModel(unittest.TestCase):
         dict_2 = inst_1.to_dict()
         # Test if dictionary updates automatically
         self.assertNotEqual(dict_1["updated_at"], dict_2["updated_at"])
+
+
+class TestBaseModelInteractions(unittest.TestCase):
+    """This class contains all tests regarding the interactions
+    of BaseModel with other classes."""
+    pass

@@ -12,4 +12,3 @@ class State(BaseModel):
     """
 
     name = ""
-

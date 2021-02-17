@@ -143,6 +143,7 @@ class TestPlaceAttributes(unittest.TestCase):
         self.maxDiff = None
         self.assertEqual(test_creation.name, new_place.name)
 
+
 class TestPlaceConnectionsWithOtherClasses(unittest.TestCase):
     """This class tests all assignation of attributes from other classes,
     such as: Place.user_id (assigned from class User), Place.city_id, etc.
@@ -172,6 +173,3 @@ class TestPlaceConnectionsWithOtherClasses(unittest.TestCase):
         # Test correct assignation
         self.assertEqual(new_place.city_id, new_city.id)
         self.assertEqual(new_place.user_id, new_user.id)
-
-def test_correct_assignation_with_instances(self):
-    pass
