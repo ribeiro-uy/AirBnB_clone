@@ -4,6 +4,6 @@ import unittest
 from models.user import User
 
 
-class TestCorrectAssignation(unittest.TestCase):
+class TestUserAttributes(unittest.TestCase):
     """Test the correct assignation of attribute values."""
     pass

@@ -144,7 +144,7 @@ class TestPlaceAttributes(unittest.TestCase):
         self.assertEqual(test_creation.name, new_place.name)
 
 
-class TestPlaceConnectionsWithOtherClasses(unittest.TestCase):
+class TestPlaceConnections(unittest.TestCase):
     """This class tests all assignation of attributes from other classes,
     such as: Place.user_id (assigned from class User), Place.city_id, etc.
     """

@@ -6,6 +6,6 @@ import unittest
 from models.review import Review
 
 
-class TestCorrectAssignation(unittest.TestCase):
+class TestReviewAttributes(unittest.TestCase):
     """This class contains all tests for attribute value assignation."""
     pass

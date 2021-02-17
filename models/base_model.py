@@ -20,14 +20,20 @@ class BaseModel():
                                 strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
                     else:
                         setattr(self, key, value)
+        elif args:  # A dictionary given at creation will be in a tuple.
+            for dictionary in args:
+                for key, value in dictionary.items():
+                    if key != '__class__':
+                        if key == "created_at" or key == "updated_at":
+                            setattr(self, key, datetime.
+                                    strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                        else:
+                            setattr(self, key, value)
         else:  # No arguments at the time of creation.
             self.id = str(uuid.uuid4())  # quedó funcionando eso? yesss jaja
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-            models.storage.save()
-            
-            # acá no deberíamos hacer un save? puede ser
 
     def __str__(self):
         """Returns the print() and str() representation
