@@ -16,7 +16,7 @@ class TestPlaceAttributes(unittest.TestCase):
     user_id (str): the User.id
     name (str): name of the place
     description (str): description of the place
-    number_rooms (int): default: 0
+    number_rooms (int): default: 02
     number_bathrooms (int): default: 0
     max_guest (int): default: 0
     price_by_night (int): default: 0
@@ -24,6 +24,7 @@ class TestPlaceAttributes(unittest.TestCase):
     longitude(float): default: 0.0
     amenity_ids: the list of Amenity.id
     """
+
 
     def test_correct_assignation(self):
         """Test assignation of all attributes with correct values."""

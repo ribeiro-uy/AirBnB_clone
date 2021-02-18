@@ -31,6 +31,7 @@ class TestAmenityAttributes(unittest.TestCase):
         second_instance = Amenity()
         second_instance.name = new_instance.name
         self.assertEqual(new_instance.name, second_instance.name)
+
     def test_unique_id(self):
         """
         Check the uniq uuid

@@ -49,7 +49,8 @@ class TestCityMethods(unittest.TestCase):
     """
     def test_to_dict(self):
         """
-        Check dict method"""
+        Check dict method.
+        """
         new_city = City()
         new_city.name = "Ba Sing Se"
         new_city.save()
@@ -58,7 +59,7 @@ class TestCityMethods(unittest.TestCase):
 
     def test_str(self):
         """
-        Check str method
+        Check str method.
         """
         new_city = City()
         string = "[City] ({}) {}".format(new_city.id, new_city.__dict__)
@@ -76,3 +77,13 @@ class TestCityMethods(unittest.TestCase):
         another_city = City(new_city.to_dict())
         self.assertEqual(new_city.name, another_city.name)
         self.assertEqual(new_city.state_id, another_city.state_id)
+
+    def test_save(self):
+        """
+        Check save method.
+        """
+        new_city = City()
+        update = new_city.updated_at
+        new_city.name = "London"
+        new_city.save()
+        self.assertNotEqual(update, new_city.updated_at)
