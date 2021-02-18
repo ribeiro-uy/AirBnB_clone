@@ -3,6 +3,8 @@
 import unittest
 from models.state import State
 from models.base_model import BaseModel
+
+
 class TestStateAttributes(unittest.TestCase):
     """Test assignation of attributes."""
     def test_correct_assignation(self):
@@ -12,6 +14,8 @@ class TestStateAttributes(unittest.TestCase):
         self.assertIsInstance(new_state, State)
         self.assertIsInstance(new_state, BaseModel)
         self.assertIsInstance(new_state.name, str)
+
+
 class TestStateMethods(unittest.TestCase):
     """
     Test all inherited methods.
@@ -26,6 +30,7 @@ class TestStateMethods(unittest.TestCase):
         new_state.save()
         new_state_json = new_state.to_dict()
         self.assertIsInstance(new_state_json, dict)
+
     def test_str(self):
         """
         Check str method.
@@ -34,6 +39,7 @@ class TestStateMethods(unittest.TestCase):
         string = "[State] ({}) {}".format(new_state.id, new_state.__dict__)
         self.assertIsInstance(new_state.__str__(), str)
         self.assertEqual(new_state.__str__(), string)
+
     def test_creation_with_dict(self):
         """
         Check creation of instance with dictionary.
