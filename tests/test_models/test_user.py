@@ -110,7 +110,7 @@ class TestUserStorage(unittest.TestCase):
         neo.save()
         models.storage.new(neo)
         all_objs = models.storage.all()
-        self.assertNotIn(neo, all_objs)
+        self.assertIn(neo, all_objs.values())
 
     def test_save_reload(self):
         """Test if storage correctly serializes and deserializes."""
