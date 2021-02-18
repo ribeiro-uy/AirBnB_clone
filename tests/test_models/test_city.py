@@ -12,7 +12,7 @@ class Test_City_Class(unittest.TestCase):
     Check instance, type and class
     """
 
-    def test_instance(self)
+    def test_instance(self):
         """
         Check instance
         """
@@ -47,23 +47,23 @@ class TestCityMethods(unittest.TestCase):
     """
     Test all inherited methods.
     """
-    def test_to_dict(self)
+    def test_to_dict(self):
         """
         Check dict method"""
         new_city = City()
         new_city.name = "Ba Sing Se"
         new_city.save()
-        new_city_json = my_city.to_dict()
+        new_city_json = new_city.to_dict()
         self.assertIsInstance(new_city_json, dict)
 
-    def test_str(self)
+    def test_str(self):
         """
         Check str method
         """
         new_city = City()
         string = "[City] ({}) {}".format(new_city.id, new_city.__dict__)
-        self.assertIsInstance(new_city.__str__, str)
-        self.assertEqual(new_city.__str__, string)
+        self.assertIsInstance(new_city.__str__(), str)
+        self.assertEqual(new_city.__str__(), string)
 
     def test_creation_with_dict(self):
         """
@@ -76,9 +76,3 @@ class TestCityMethods(unittest.TestCase):
         another_city = City(new_city.to_dict())
         self.assertEqual(new_city.name, another_city.name)
         self.assertEqual(new_city.state_id, another_city.state_id)
-
-# no se que mas testear
-# te cayiste?
-
-
-
