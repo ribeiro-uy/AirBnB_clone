@@ -125,4 +125,3 @@ class TestUserStorage(unittest.TestCase):
         models.storage.reload()
         new_objs = models.storage.all()
         self.assertEqual(all_objs, new_objs)
-

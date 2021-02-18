@@ -25,7 +25,6 @@ class TestPlaceAttributes(unittest.TestCase):
     amenity_ids: the list of Amenity.id
     """
 
-
     def test_correct_assignation(self):
         """Test assignation of all attributes with correct values."""
         new_place = Place()
