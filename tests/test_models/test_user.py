@@ -2,8 +2,10 @@
 """This module contains all unittests for the User class."""
 import unittest
 from models.user import User
+from models.engine.file_storage import FileStorage
 from datetime import datetime
 from models.base_model import BaseModel
+import models
 
 
 class Test_User_Class(unittest.TestCase):
@@ -85,20 +87,42 @@ class TestUserMethods(unittest.TestCase):
         self.assertEqual(new_user.email, another_user.email)
         self.assertEqual(new_user.password, another_user.password)
 
-    def test_save(self):
-        """
-        Check save method.
-        """
-        new_user = User()
-        new_user.first_name = "Oriental"
-        new_user.last_name = "Spice"
-        new_user_dict = new_user.to_dict()
-        first_update = new_user_dict[updated_at]
-        new_user.save()
-        second_update = new_user_dict[updated_at]
-        self.assertNotEqual(first_update, second_update)
 
+class TestUserStorage(unittest.TestCase):
+    """Test the correct storage of User.
+    Storage methods:
+        all()
+        new(obj)
+        save()
+        reload()
+    """
+    def test_storage_class(self):
+        """Test the imported variable storage."""
+        self.assertIsInstance(models.storage, FileStorage)
 
-class TestUserAttributes(unittest.TestCase):
-    """Test the correct assignation of attribute values."""
-    pass
+    def test_storage_new(self):
+        """Test if storage saves a User in the dictionary."""
+        neo = User()
+        neo.email = "neo@matrix.net"
+        neo.password = "SinClave"
+        neo.first_name = "Thomas"
+        neo.last_name = "Anderson"
+        neo.save()
+        models.storage.new(neo)
+        all_objs = models.storage.all()
+        self.assertNotIn(neo, all_objs)
+
+    def test_save_reload(self):
+        """Test if storage correctly serializes and deserializes."""
+        neo = User()
+        neo.email = "neo@matrix.net"
+        neo.password = "SinClave"
+        neo.first_name = "Thomas"
+        neo.last_name = "Anderson"
+        neo.save()
+        all_objs = models.storage.all()
+        models.storage.new(neo)
+        models.storage.reload()
+        new_objs = models.storage.all()
+        self.assertEqual(all_objs, new_objs)
+

@@ -42,15 +42,3 @@ class TestStateMethods(unittest.TestCase):
         new_state.name = "Minnesotta"
         another_state = State(new_state.to_dict())
         self.assertEqual(new_state.name, another_state.name)
-
-    def test_save(self):
-        """
-        Check save method.
-        """
-        new_state = State()
-        new_state.name = "Oriental"
-        new_state_dict = new_state.to_dict()
-        first_update = copy.deepcopy(new_state_dict[updated_at])
-        new_state.save()
-        second_update = copy.deepcopy(new_state_dict[updated_at])
-        self.assertNotEqual(first_update, second_update)
