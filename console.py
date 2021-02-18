@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    # Create new instance of BaseModel
+    # Commands
     def do_create(self, arg):
         """This command creates a new instace of BaseModel
         and saves it to JSON file, printing the ID.
@@ -230,6 +230,49 @@ class HBNBCommand(cmd.Cmd):
         """What it does with enters and empty lines.
         """
         pass
+
+    def default(self, line):
+        """
+        This method is called when the command is not found.
+        """
+        for c in line:
+            if c is '.':
+                try:
+                    arg = line.replace("(", ".(")
+                    args_list = arg.split(".")
+                    if check_class(args_list[0]):
+                        if args_list[1] == "count":  # This works
+                            dictionary = storage.all()
+                            thenumber = 0
+                            for key in dictionary:
+                                key = key.split('.')
+                                if key[0] == args_list[0]:
+                                    thenumber += 1
+                            print(thenumber)
+                        elif args_list[1] == "all":  # This works
+                            self.do_all(args_list[0])
+                        elif args_list[1] == "show":  # This works
+                            args_list[2] = args_list[2].replace("(", "")
+                            args_list[2] = args_list[2].replace(")", "")
+                            self.do_show(args_list[0] + ' ' + args_list[2])
+                        elif args_list[1] == "destroy":  # This works
+                            args_list[2] = args_list[2].replace("(", "")
+                            args_list[2] = args_list[2].replace(")", "")
+                            self.do_destroy(args_list[0] + ' ' + args_list[2])
+                        elif args_list[1] == "update":  # This works
+                            args_list[2] = args_list[2].replace("(", "")
+                            args_list[2] = args_list[2].replace(")", "")
+                            parameters = args_list[2].split(",")
+                            print(parameters)
+                            aidi = parameters[0]
+                            name = parameters[1]
+                            value = parameters[2]
+                            self.do_update(args_list[0] + ' ' + aidi +
+                                           ' ' + name + ' ' + value)
+                    else:
+                        print("** command not found **")
+                except:
+                    pass
 
 
 def parse(arg):
