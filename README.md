@@ -12,10 +12,11 @@ This program works both in interactive and non-interactive mode.
 
 * Clone this repository: git clone "https://github.com/rmribeiro-uy/AirBnB_clone.git"
 * Access AirBnb directory: cd AirBnB_clone
-* Run hbnb(interactively): ./console and enter command
-* Run hbnb(non-interactively): echo "<command>" | ./console.py
+* Run hbnb (interactively): ./console
+* Run hbnb (non-interactively): echo "<command>" | ./console.py
 
-Then input commands.
+When running interactively, type a command and press return to run it.
+This console allows for command completion, as well as command history.
 
 ´´´ $ ./console.py
 ´´´ (hbnb) help
@@ -29,23 +30,33 @@ Then input commands.
 # Commands
 
 This is a list of the different commands, and a description of their function.
+Most commands accept both an interface syntax (<command> <values>) as well as\
+ a more pythonic command-line approach (<class name>.<values>). In this case,\
+ values should be separated by a comma.
 
 - create: Creates a new instance of the given class, saves it, and prints the id.
-	Usage: (hbnb) create <class name>
+	Usage:	(hbnb) create <class name>
+			(hbnb) <class name>.create
 
 - show: Prints the string representation of an instance based on class name and id.
-	Usage: (hbnb) show <class name> <id>
+	Usage:	(hbnb) show <class name> <id>
+			(hbnb) <class name>.show(<id>)
 
-- all: Prints all string representations of all instances based or not on the class name.\
-Future release will take into account the class name, and print all instances of said class.
+- all: Prints all string representations of all instances based or not on the class name.
 	Usage:	(hbnb) all
 			(hbnb) all <class name>
+			(hbnb) <class name>.all()
 
 - destroy: Deletes an instance based on class name and id, saving the change in the JSON file.
-	Usage: (hbnb) destroy <class name> <id>
+	Usage: 	(hbnb) destroy <class name> <id>
+			(hbnb) <class name>.destroy(<id>)
 
 - update: Updates an instance based on class name and id, by adding or updating an attribute.
-	Usage: (hbnb) update <class name> <id> <attribute name> "<attribute value>"
+	Usage: 	(hbnb) update <class name> <id> <attribute name> "<attribute value>"
+			(hbnb) <class name>.update(<id>, <attribute name>, <attribute value>)
+
+- count: Displays the number of instances of a given class.
+	Usage: (hbnb) <class name>.count()
 
 - help: Displays documentation. If a command is given, it will display information about \
 said command, otherwise it will list all commands.
@@ -61,17 +72,8 @@ said command, otherwise it will list all commands.
 
 A list of the features to develop in case we have some extra time:
 
-- Console retrieves all instances of a given class.
-
-- Console retrieves the number of instances of a given class.
-
-- Console retrieves an instance based on its id.
-
-- Console destroys an instance based on its id.
-
-- Console updates an attribute of an instance based on its id.
-
-- Console updates an instance based on its id (with a given dictionary).
+- Console updates several attributes of an instance with a given dictionary.
+	Usage: <class name>.update(<id>, <dictionary of attributes>)
 
 # Bugs
 
