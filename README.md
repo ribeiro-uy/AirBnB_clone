@@ -8,6 +8,7 @@ This program works both in interactive and non-interactive mode.
 
 # General usage
 
+
 ## Installation
 
 * Clone this repository: git clone "https://github.com/rmribeiro-uy/AirBnB_clone.git"
@@ -105,7 +106,6 @@ No known bugs yet.
 
 # Authors
 
-Micaela Percovich
-Roberto Ribeiro
+Micaela Percovich - Roberto Ribeiro
 
 February - 2020
