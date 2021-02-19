@@ -8,6 +8,11 @@ This program works both in interactive and non-interactive mode.
 
 # General usage
 
+## Environment
+
+   Language: Python3
+   OS: Ubuntu 14.04 LTS
+   Style guidelines: PEP 8 (version 1.7) || Google Style Python Docstrings
 
 ## Installation
 
