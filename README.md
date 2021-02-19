@@ -91,6 +91,14 @@ A list of the features to develop in case we have some extra time:
 
 	Usage: <class name>.update(<id>, <dictionary of attributes>)
 
+# Tests
+
+If you wish to run at the test for this application,
+all of the test are located under the test/ folder.
+
+From the root directory can execute all of them by simply running:
+$ python3 -m unittest discover tests
+
 # Bugs
 
 No known bugs yet.
