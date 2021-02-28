@@ -29,7 +29,7 @@ section.filters button:hover {
 .locations, .amenities {
     height: 100%;
     width: 25%;
-    padding-left: 30px;
+    padding-left: 40px;
 }
 
 .locations {
@@ -49,24 +49,47 @@ section.filters button:hover {
 
 .popover {
     display: none;
+    position: relative;
+    left: -40px;
     background-color: #FAFAFA;
+    width: 95%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    width: : 100px %;
-    position: relative;
+    padding: 30px 50px 30px 0;
+    margin-top: 18px;
 }
 
-.popover, popover ul{
+.popover, .popover ul {
     list-style-type: none;
 }
-
-/* Displays the menu on mouse over */
-.locations:hover .popover{
+.locations:hover > .popover {
     display: block;
 }
 
-.popover h2{
-    font-size: 16px;
+.amenities:hover > .popover {
+    display: block;
+}
+
+.popover h2 {
     margin-top: 0px;
     margin-bottom: 5px;
+}
+
+.locations > .popover > li {
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+/* Indentation of elements */
+.locations > .popover > li > ul {
+    padding-left: 20px;
+}
+/* Spacing between elements */
+.locations > .popover > li > ul > li {
+    margin-bottom: 5px;
+}
+
+.amenities > .popover > li {
+    margin-left: 50px;
+    margin-bottom: 10px;
 }
