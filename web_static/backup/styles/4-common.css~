@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.container{
+    display: flex;
+    max-width: 1000px;
+    margin-top: 30px;
+    bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.filters{
+    color: white;
+    display: flex;
+    height: 70px;
+    width: 100%;
+    border: 1px #DDDDDD;
+    border-radius: 4px;
+}
